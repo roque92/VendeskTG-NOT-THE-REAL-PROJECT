@@ -28,7 +28,7 @@ public class SchemaNameGenerator {
         List<TenantEntity> existingTenants  = repository.findBySchemaNameStartingWithIgnoreCase(baseName);
 
         if (existingTenants.isEmpty()) {
-            log.error("Nombre único generado: {}", baseName);
+            log.warn("Nombre único generado: {}", baseName);
             return baseName;
         }
 
@@ -39,7 +39,7 @@ public class SchemaNameGenerator {
 
         // 4. Si el nombre base no existe, usarlo
         if (!existingNames.contains(baseName.toLowerCase())) {
-            log.error("Nombre único generado: {}", baseName);
+            log.warn("Nombre único generado: {}", baseName);
             return baseName;
         }
 

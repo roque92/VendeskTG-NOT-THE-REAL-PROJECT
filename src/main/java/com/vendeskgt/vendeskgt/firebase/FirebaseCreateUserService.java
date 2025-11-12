@@ -4,6 +4,7 @@ import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
+import com.vendeskgt.vendeskgt.domain.enums.RoleEnum;
 import com.vendeskgt.vendeskgt.resend.ResendVerifyEmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,10 +31,11 @@ public class FirebaseCreateUserService {
         this.emailService = emailService;
     }
 
-    public void registerUser(String email, String password, UUID tenantId, String role)
+    public void registerUser(String email, String password, UUID tenantId,RoleEnum role)
             throws FirebaseAuthException {
 
         UserRecord userRecord;
+        email = email.toLowerCase();
 
         // 1️⃣ Crear usuario
         try {
@@ -53,7 +55,7 @@ public class FirebaseCreateUserService {
         try {
             Map<String, Object> claims = new HashMap<>();
             claims.put("tenantId", tenantId.toString());
-            claims.put("role", role);
+            claims.put("role", role.name());
 
             firebaseAuth.setCustomUserClaims(userRecord.getUid(), claims);
             log.info("✅ Custom claims asignadas a usuario: {}", email);

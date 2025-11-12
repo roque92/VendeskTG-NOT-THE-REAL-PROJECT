@@ -3,6 +3,7 @@ package com.vendeskgt.vendeskgt.firebase;
 import com.google.firebase.auth.ExportedUserRecord;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.ListUsersPage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class FirebaseUserService {
 
     private final FirebaseConfig firebaseConfig;
 
+    @Autowired
     public FirebaseUserService(FirebaseConfig firebaseConfig) {
         this.firebaseConfig = firebaseConfig;
     }

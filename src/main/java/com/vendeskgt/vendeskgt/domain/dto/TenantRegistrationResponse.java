@@ -1,5 +1,6 @@
 package com.vendeskgt.vendeskgt.domain.dto;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -12,7 +13,7 @@ public record TenantRegistrationResponse(
         // Datos de suscripción
         String planType,
         String paymentMethod,
-        LocalDate subscriptionStartDate,
-        LocalDate subscriptionEndDate
+        Timestamp subscriptionStartDate,
+        Timestamp subscriptionEndDate
 ) {
 }
